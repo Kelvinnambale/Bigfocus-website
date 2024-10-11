@@ -85,6 +85,62 @@
         <p>&copy; 2024 Intellitech. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+        document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle
+    const createMobileMenu = () => {
+        const nav = document.querySelector('nav');
+        const mobileMenuBtn = document.createElement('button');
+        mobileMenuBtn.textContent = 'Menu';
+        mobileMenuBtn.classList.add('mobile-menu-toggle');
+        nav.parentNode.insertBefore(mobileMenuBtn, nav);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+    };
+
+    // Smooth scrolling for anchor links
+    const smoothScroll = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    };
+
+    // Form submission
+    const handleFormSubmission = () => {
+        const form = document.getElementById('subscribe-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with: ${email}`);
+                form.reset();
+            });
+        }
+    };
+
+    // Product category expansion
+    const expandProductCategories = () => {
+        const categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                category.classList.toggle('expanded');
+            });
+        });
+    };
+
+    // Initialize functions
+    createMobileMenu();
+    smoothScroll();
+    handleFormSubmission();
+    expandProductCategories();
+});
+    </script>
 </body>
 </html>
