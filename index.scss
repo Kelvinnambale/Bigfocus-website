@@ -1,0 +1,196 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$text-color: #333;
+$background-color: #f4f4f4;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Global styles
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: $text-color;
+    background-color: $background-color;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+// Header
+header {
+    background-color: $secondary-color;
+    color: #fff;
+    padding: 1rem 0;
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    nav {
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: inline;
+                margin-left: 1rem;
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Main content
+main {
+    padding: 2rem 0;
+
+    section {
+        margin-bottom: 2rem;
+    }
+
+    h1, h2 {
+        color: $secondary-color;
+    }
+}
+
+// Products
+.product-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .category {
+        flex-basis: calc(25% - 1rem);
+        background-color: #fff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        h3 {
+            color: $primary-color;
+        }
+
+        ul {
+            padding-left: 1rem;
+        }
+    }
+}
+
+// Services
+#services {
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            background-color: $primary-color;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+        }
+    }
+}
+
+// Blog
+#blog {
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            background-color: #fff;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid $primary-color;
+        }
+    }
+}
+
+// Promotions
+#promotions {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+
+    form {
+        @include flex-center;
+        margin-top: 1rem;
+
+        input[type="email"] {
+            padding: 0.5rem;
+            width: 60%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: $secondary-color;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($secondary-color, 10%);
+            }
+        }
+    }
+}
+
+// Footer
+footer {
+    background-color: $secondary-color;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+// Media queries
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+
+        nav ul {
+            margin-top: 1rem;
+
+            li {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    }
+
+    .product-categories .category {
+        flex-basis: 100%;
+    }
+
+    #promotions form {
+        flex-direction: column;
+
+        input[type="email"], button {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
